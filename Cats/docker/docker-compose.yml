@@ -1,0 +1,35 @@
+version: '3.9'
+
+services:
+  postgres-users:
+    image: postgres:latest
+    container_name: cats-users
+    environment:
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=coolpassword
+      - POSTGRES_DB=users
+    ports:
+      - "6432:5432"
+    restart: unless-stopped
+
+  postgres-cats:
+    image: postgres:latest
+    container_name: cats-cats
+    environment:
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=coolpassword
+      - POSTGRES_DB=cats
+    ports:
+      - "7432:5432"
+    restart: unless-stopped
+
+  postgres-owners:
+    image: postgres:latest
+    container_name: cats-owners
+    environment:
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=coolpassword
+      - POSTGRES_DB=owners
+    ports:
+      - "8432:5432"
+    restart: unless-stopped
